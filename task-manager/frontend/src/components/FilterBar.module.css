@@ -1,0 +1,47 @@
+.bar {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 16px;
+  border-radius: 99px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: var(--font-sans);
+  color: var(--text-secondary);
+  border: 1.5px solid transparent;
+  background: transparent;
+  transition: color var(--transition), border-color var(--transition), background var(--transition);
+}
+
+.btn:hover {
+  color: var(--text-primary);
+  background: var(--surface-hover);
+}
+
+.btn.active {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-dim);
+}
+
+.badge {
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  background: var(--surface-hover);
+  color: var(--text-muted);
+  border-radius: 99px;
+  padding: 1px 7px;
+  min-width: 20px;
+  text-align: center;
+}
+
+.active .badge {
+  background: rgba(200, 241, 53, 0.2);
+  color: var(--accent);
+}
