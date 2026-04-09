@@ -1,0 +1,25 @@
+version: '3.9'
+
+services:
+  backend:
+    build: ./backend
+    container_name: task-manager-api
+    ports:
+      - '5000:5000'
+    volumes:
+      - task-data:/app/data
+    environment:
+      - PORT=5000
+    restart: unless-stopped
+
+  frontend:
+    build: ./frontend
+    container_name: task-manager-client
+    ports:
+      - '5173:80'
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+volumes:
+  task-data:
