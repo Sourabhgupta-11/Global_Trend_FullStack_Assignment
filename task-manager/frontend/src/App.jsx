@@ -1,9 +1,20 @@
+import { useState } from 'react';
+import { useTasks } from './hooks/useTasks';
 import TaskForm from './components/TaskForm';
 import TaskList from './components/TaskList';
 import FilterBar from './components/FilterBar';
 import styles from './App.module.css';
 
 export default function App() {
+  const [filter, setFilter] = useState('all');
+  const { tasks, loading, error, addTask, toggleTask, editTask, removeTask } = useTasks(filter);
+
+  const counts = {
+    all: filter === 'all' ? tasks.length : undefined,
+    incomplete: filter === 'incomplete' ? tasks.length : undefined,
+    completed: filter === 'completed' ? tasks.length : undefined,
+  };
+
   return (
     <div className={styles.page}>
       <div className={styles.container}>
@@ -16,9 +27,16 @@ export default function App() {
         </header>
 
         <main>
-          <TaskForm/>
-          <FilterBar/>
-          <TaskList/>
+          <TaskForm onAdd={addTask} />
+          <FilterBar current={filter} onChange={setFilter} counts={counts} />
+          <TaskList
+            tasks={tasks}
+            loading={loading}
+            error={error}
+            onToggle={toggleTask}
+            onEdit={editTask}
+            onDelete={removeTask}
+          />
         </main>
       </div>
     </div>
