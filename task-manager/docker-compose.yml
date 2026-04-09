@@ -16,7 +16,7 @@ services:
     build: ./frontend
     container_name: task-manager-client
     ports:
-      - '5173:80'
+      - '5174:80'
     depends_on:
       - backend
     restart: unless-stopped

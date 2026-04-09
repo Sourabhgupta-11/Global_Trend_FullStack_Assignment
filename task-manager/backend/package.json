@@ -1,7 +1,7 @@
 {
-  "name": "backend",
+  "name": "task-manager-backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "This is the backend for Task Manager application. It provides RESTful APIs to manage tasks.",
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
